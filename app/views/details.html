@@ -16,13 +16,13 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/form-handler" method="post" novalidate>
+      <form action="/checkanswers" method="post" novalidate>
 
     {% from "notification-banner/macro.njk" import notificationBanner %}
 {% from 'textarea/macro.njk' import textarea %}
 
 {{ textarea({
-  name: "example-longer",
+  name: "details",
   id: "example-longer",
   rows: "10",
   label: {
@@ -32,7 +32,8 @@
   },
   hint: {
       text: "Please include as much detail as possible."
-  }
+  },
+  value: data.details
 }) }}
 
 

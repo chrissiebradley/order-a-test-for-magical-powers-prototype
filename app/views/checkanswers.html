@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'summary-list/macro.njk' import summaryList %}
+
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/details",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Check your answers before sending your application</h1>
+
+      <h2 class="nhsuk-heading-m">
+        Personal details
+      </h2>
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Symptoms of magical powers"
+            },
+            value: {
+              text: data.hasSymptoms
+            },
+            actions: {
+              items: [
+                {
+                  href: "/magical-powers",
+                  text: "Change",
+                  visuallyHiddenText: "Symptoms of magical powers"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Details"
+            },
+            value: {
+              text: data.details
+            },
+            actions: {
+              items: [
+                {
+                  href: "/details",
+                  text: "Change",
+                  visuallyHiddenText: "description of symptoms"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      
+      <h2 class="nhsuk-heading-m">
+        Now send your application
+      </h2>
+
+      <p>
+        Your details will be sent to Dr Frankie Roberto Practice.
+      </p>
+
+      <form action=/confirmation method="post" novalidate>
+        {{ button({
+          text: "Confirm and send"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
