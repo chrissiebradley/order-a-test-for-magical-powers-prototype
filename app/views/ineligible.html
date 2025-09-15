@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% from 'panel/macro.njk' import panel %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ panel({
+        titleText: "Access denied",
+        text: "You are not magic enough for a test."
+      }) }}
+
+      <p> Try again later when you're taller. </p>
+
+    </div>
+  </div>
+{% endblock %}
