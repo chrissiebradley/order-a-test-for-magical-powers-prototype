@@ -1,0 +1,64 @@
+{%extends "layout.html"%}
+
+
+{% from 'breadcrumb/macro.njk' import breadcrumb %}
+{% from 'button/macro.njk' import button %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "#",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Section"
+      }
+    ],
+    href: "#",
+    text: "Subsection"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>{{ serviceName}}</h1>
+      <p>Use this service to do something.</p>
+      <p>You can use this service if you:</p>
+      <ul>
+        <li>live in England</li>
+        <li>have red hair</li>
+        <li>need to fly to the moon</li>
+      </ul>  
+
+      {% from 'details/macro.njk' import details %}
+
+{% from 'inset-text/macro.njk' import insetText %}
+
+{% set insetTextHtml %}
+  <p>You must be 7ft tall.</p>
+{% endset %}
+
+{{ insetText({
+  html: insetTextHtml
+}) }}
+
+      <h2>Before you start</h2>
+
+      <p>We'll ask you for: ...</p>
+
+      {{ button({
+        text: "Start now",
+        href: "#"
+      }) }}
+
+      <p>By using this service you are agreeing to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.</p>
+
+    </div>
+  </div>
+{% endblock %}
