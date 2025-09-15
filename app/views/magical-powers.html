@@ -8,7 +8,7 @@
 
 {% block beforeContent %}
   {{ backLink({
-    href: "#",
+    href: "/start-page",
     text: "Back"
   }) }}
 {% endblock %}
@@ -16,7 +16,19 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/form-handler" method="post" novalidate>
+      <form action="/details" method="post" novalidate>
+
+    {% from "notification-banner/macro.njk" import notificationBanner %}
+
+{% set html %}
+  <p class="nhsuk-notification-banner__heading">
+    You only have magical powers for 24 hours!
+  </p>
+{% endset %}
+
+{{ notificationBanner({
+  html: html
+}) }}
 
         {{ radios({
           name: "whereDoYouLive",
@@ -29,7 +41,7 @@
           },
 
             hint: {
-    text: "This is a magical symptom that other humans do not have."
+    text: "For example, snakes coming out of your ears."
   },
           items: [
             {
